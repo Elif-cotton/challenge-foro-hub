@@ -1,30 +1,26 @@
-package com.foro.forohub.domain.curso;
+package com.foro.forohub.domain.perfil;
 
+import com.foro.forohub.domain.usuario.DatosRegistroUsuario;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-@Table(name = "cursos")
-@Entity(name = "Curso")
+@Table(name = "perfiles")
+@Entity(name = "Perfil")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class Curso {
+public class Perfil {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nombre;
-    private Categoria categoria;
 
-    public Curso(DatosCurso curso) {
-        this.nombre = curso.nombre();
-        this.categoria = curso.categoria();
+    public Perfil(DatosPerfil perfil) {
+        this.nombre = perfil.nombre();
 
     }
-
-
 }

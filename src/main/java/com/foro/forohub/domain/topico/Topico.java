@@ -26,8 +26,7 @@ public class Topico {
     private String titulo;
     private String mensaje;
     private LocalDate fechaCreacion;
-    @Enumerated(EnumType.STRING)
-    private Status status;
+    private Boolean status;
     private String autor;
 
     @ManyToOne
@@ -41,12 +40,25 @@ public class Topico {
         this.titulo = datosRegistroTopico.titulo();
         this.mensaje = datosRegistroTopico.mensaje();
         this.fechaCreacion = LocalDate.now(); // Obtener la fecha actual;
-        this.status = datosRegistroTopico.status();
+        this.status = true;  //activo
         this.autor = datosRegistroTopico.autor();
         this.curso = new Curso(datosRegistroTopico.curso());
 
         // Crear instancias de Respuesta a partir de DatosRespuesta y agregarlas a la lista de respuestas
-        Respuesta respuesta = new Respuesta(datosRegistroTopico.respuestas(), this);
+        Respuesta respuesta = new Respuesta(datosRegistroTopico.respuesta(), this);
         this.respuestas.add(respuesta);
+    }
+
+    public void actualizarDatos(DatosActualizarTopico datosActualizarTopico) {
+        if (datosActualizarTopico.titulo() != null) {
+            this.titulo = datosActualizarTopico.titulo();
+        }
+        if (datosActualizarTopico.mensaje() != null) {
+            this.mensaje = datosActualizarTopico.mensaje();
+        }
+    }
+
+    public void desactivarTopico() {
+        this.status = false;
     }
 }

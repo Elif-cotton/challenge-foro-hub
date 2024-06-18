@@ -1,5 +1,5 @@
 
-CREATE TABLE respuestas (
+CREATE TABLE IF NOT EXISTS respuestas (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     mensaje TEXT NOT NULL,
     topico_id INT,

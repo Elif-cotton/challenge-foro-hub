@@ -8,10 +8,6 @@ public record DatosRespuesta(
         @NotBlank
         String mensaje,
         @NotBlank
-        String topico,
-
-        //LocalDate fechaCreacion,
-        @NotBlank
         String autor,
         @NotBlank
         String solucion

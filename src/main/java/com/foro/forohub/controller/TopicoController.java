@@ -1,14 +1,12 @@
 package com.foro.forohub.controller;
 
-import com.foro.forohub.domain.topico.DatosListadoTopico;
-import com.foro.forohub.domain.topico.DatosRegistroTopico;
-import com.foro.forohub.domain.topico.Topico;
-import com.foro.forohub.domain.topico.TopicoRepository;
+import com.foro.forohub.domain.topico.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -23,10 +21,24 @@ public class TopicoController {
         topicoRepository.save(new Topico(datosRegistroTopico));
     }
 
-
     @GetMapping
-    public Page<DatosListadoTopico> listadotopicos(@PageableDefault(size = 2) Pageable paginacion) {
-        return topicoRepository.findAll(paginacion).map(DatosListadoTopico::new);
+    public Page<DatosListadoTopico> listadoTopicos(@PageableDefault(size = 2) Pageable paginacion) {
+        return topicoRepository.findByStatusTrue(paginacion).map(DatosListadoTopico::new);
     }
+
+    @PutMapping
+    @Transactional
+    public void actualizarTopico(@RequestBody @Valid DatosActualizarTopico datosActualizarTopico) {
+        Topico topico = topicoRepository.getReferenceById(datosActualizarTopico.id());
+        topico.actualizarDatos(datosActualizarTopico);
+    }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public void eliminarTopico(@PathVariable Long id) {
+        Topico topico = topicoRepository.getReferenceById(id);
+        topico.desactivarTopico();
+    }
+
 
 }

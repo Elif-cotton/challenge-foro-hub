@@ -6,6 +6,7 @@ import com.foro.forohub.domain.respuesta.DatosRespuesta;
 import java.time.LocalDate;
 
 public record DatosListadoTopico(
+        Long id,
         String titulo,
         String mensaje,
         LocalDate fechaCreacion,
@@ -15,7 +16,7 @@ public record DatosListadoTopico(
 ) {
 
     public DatosListadoTopico(Topico topico) {
-        this(topico.getTitulo(), topico.getMensaje(), topico.getFechaCreacion(), topico.getAutor(),
+        this(topico.getId(), topico.getTitulo(), topico.getMensaje(), topico.getFechaCreacion(), topico.getAutor(),
                 new DatosCurso(topico.getCurso()));
     }
 }

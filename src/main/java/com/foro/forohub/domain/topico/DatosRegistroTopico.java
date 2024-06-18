@@ -13,9 +13,6 @@ public record DatosRegistroTopico(
         String titulo,
         @NotBlank
         String mensaje,
-       // LocalDate fechaCreacion,
-        @NotNull
-        Status status,
         @NotBlank
         String autor,
         @NotNull
@@ -23,6 +20,6 @@ public record DatosRegistroTopico(
         DatosCurso curso,
         @NotNull
         @Valid
-        DatosRespuesta respuestas
+        DatosRespuesta respuesta
 ) {
 }

@@ -17,6 +17,6 @@ public record DatosListadoTopico(
 
     public DatosListadoTopico(Topico topico) {
         this(topico.getId(), topico.getTitulo(), topico.getMensaje(), topico.getFechaCreacion(), topico.getAutor(),
-                new DatosCurso(topico.getCurso()));
+                new DatosCurso(topico.getCurso().getNombre(), topico.getCurso().getCategoria()));
     }
 }

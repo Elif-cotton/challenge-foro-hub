@@ -8,7 +8,7 @@ public record DatosCurso(
         @NotBlank
         Categoria categoria) {
 
-        public DatosCurso(Curso curso) {
-                this(curso.getNombre(), curso.getCategoria());
-        }
+        //public DatosCurso(Curso curso) {
+            //    this(curso.getNombre(), curso.getCategoria());
+       // }
 }

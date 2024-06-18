@@ -37,4 +37,12 @@ public class Respuesta {
         this.solucion = respuesta.solucion();
 
     }
+
+    public Respuesta actualizarDatos(DatosRespuesta respuesta) {
+        this.mensaje = respuesta.mensaje();
+        this.topico = topico;
+        this.autor = respuesta.autor();
+        this.solucion = respuesta.solucion();
+        return this;
+    }
 }

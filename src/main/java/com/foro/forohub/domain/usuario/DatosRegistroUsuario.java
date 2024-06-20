@@ -8,12 +8,12 @@ import jakarta.validation.constraints.NotNull;
 
 public record DatosRegistroUsuario(
         @NotBlank
-        String nombre,
+        String login,
         @NotBlank
         @Email
         String correoElectronico,
         @NotBlank
-        String contrasena,
+        String clave,
         @NotNull(message = "El perfil no puede ser nulo")
         @Valid
         Perfil perfiles
